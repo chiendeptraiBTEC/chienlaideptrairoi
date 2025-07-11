@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cao đẳng Anh Quốc BTEC FPT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366;
+            --secondary: #e63946;
+            --accent: #2a9d8f;
+            --light: #f1faee;
+            --dark: #1d3557;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo-text span:first-child {
+            font-size: 18px;
+            line-height: 1;
+        }
+        
+        .logo-text span:last-child {
+            font-size: 14px;
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #c1121f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(230, 57, 70, 0.3);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(29, 53, 87, 0.85), rgba(29, 53, 87, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .secondary-button:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card p {
+            color: #555;
+        }
+        
+        /* Programs Section */
+        .programs {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, #e9f2fa, #ffffff);
+        }
+        
+        .programs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .program-content {
+            padding: 25px;
+        }
+        
+        .program-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+        
+        .program-content p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Campuses Section */
+        .campuses {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .campuses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .campus-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .campus-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .campus-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .campus-card p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .campus-phone {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+        }
+        
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .about-content h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background: var(--light);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            margin: 25px 0;
+            font-style: italic;
+        }
+        
+        /* Partners Section */
+        .partners {
+            padding: 60px 0;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+        }
+        
+        .partners h2 {
+            margin-bottom: 40px;
+        }
+        
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .partner-logo {
+            height: 60px;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .partner-logo:hover {
+            opacity: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo-text">
+                    <span>BTEC FPT</span>
+                    <span>CAO ĐẲNG ANH QUỐC</span>
+                </div>
+            </div>
+            
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#programs">Chương trình</a></li>
+                    <li><a href="#features">Lợi ích</a></li>
+                    <li><a href="#campuses">Cơ sở</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+                <button class="mobile-menu-btn" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            
+            <button class="cta-button">Đăng ký ngay</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Cao đẳng Anh Quốc BTEC FPT</h1>
+            <p>Chương trình đào tạo chuẩn quốc tế, cơ hội việc làm toàn cầu</p>
+            <div class="hero-buttons">
+                <button class="cta-button">Tìm hiểu chương trình</button>
+                <button class="secondary-button">Liên hệ tư vấn</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>LỢI THẾ CỦA BTEC FPT</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Bằng cấp quốc tế</h3>
+                    <p>Được công nhận tại 700+ trường đại học trên thế giới. Bằng BTEC HND Level 5 tương đương năm thứ 2 đại học tại Anh.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Tập đoàn FPT</h3>
+                    <p>Đơn vị triển khai uy tín và chuyên nghiệp với kinh nghiệm đào tạo hàng đầu tại Việt Nam.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Chương trình 2 năm</h3>
+                    <p>Học nhanh, có việc làm sớm, nghề nghiệp tốt. Tiết kiệm thời gian và chi phí so với đại học.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>98% có việc làm</h3>
+                    <p>98% sinh viên có việc làm sau khi tốt nghiệp với mức lương cạnh tranh trong và ngoài nước.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Kiểm định chất lượng</h3>
+                    <p>Pearson kiểm soát quy trình học tập, đảm bảo chất lượng đào tạo theo tiêu chuẩn Anh Quốc.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Chương trình hiện đại</h3>
+                    <p>Ứng dụng AI và công nghệ mới nhất vào giảng dạy, đảm bảo sinh viên tiếp cận kiến thức tiên tiến.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>CHƯƠNG TRÌNH ĐÀO TẠO</h2>
+            </div>
+            
+            <div class="programs-container">
+                <div class="program-card">
+                    <div class="program-image" style="background: linear-gradient(rgba(42, 157, 143, 0.7), rgba(42, 157, 143, 0.7)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="program-content">
+                        <h3>Thiết kế đồ hoạ</h3>
+                        <p>Pearson BTEC Level 5 HND Diploma in Art and Design</p>
+                        <p>Chương trình đào tạo chuyên sâu về thiết kế đồ họa, đồ họa kỹ thuật số, minh họa và thiết kế sản phẩm.</p>
+                        <button class="secondary-button" style="background: var(--accent);">Tìm hiểu thêm</button>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-image" style="background: linear-gradient(rgba(230, 57, 70, 0.7), rgba(230, 57, 70, 0.7)), url('https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="program-content">
+                        <h3>Quản trị kinh doanh</h3>
+                        <p>Pearson BTEC Level 5 HND Diploma in Business</p>
+                        <p>Đào tạo chuyên gia quản lý với kiến thức toàn diện về kinh doanh, marketing, tài chính và quản trị nhân sự.</p>
+                        <button class="secondary-button" style="background: var(--secondary);">Tìm hiểu thêm</button>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-image" style="background: linear-gradient(rgba(29, 53, 87, 0.7), rgba(29, 53, 87, 0.7)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="program-content">
+                        <h3>Lập trình máy tính</h3>
+                        <p>Pearson BTEC Level 5 HND Diploma in Computing</p>
+                        <p>Chương trình đào tạo chuyên sâu về phát triển phần mềm, trí tuệ nhân tạo, an ninh mạng và khoa học dữ liệu.</p>
+                        <button class="secondary-button">Tìm hiểu thêm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>2</h3>
+                    <p>Năm học</p>
+                </div>
+                <div class="stat-item">
+                    <h3>700+</h3>
+                    <p>Trường đại học công nhận</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Sinh viên có việc làm</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5</h3>
+                    <p>Cơ sở đào tạo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campuses Section -->
+    <section class="campuses" id="campuses">
+        <div class="container">
+            <div class="section-title">
+                <h2>HỆ THỐNG CƠ SỞ</h2>
+            </div>
+            
+            <div class="campuses-container">
+                <div class="campus-card">
+                    <div class="campus-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>BTEC FPT Hà Nội</h3>
+                    <p>Toà BTEC FPT, Trịnh Văn Bổ, Nam Tú Liêm, TP. Hà Nội</p>
+                    <a href="tel:0981090513" class="campus-phone">098 109 05 13</a>
+                </div>
+                
+                <div class="campus-card">
+                    <div class="campus-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>BTEC FPT Đà Nẵng</h3>
+                    <p>66 Võ Văn Tân, Q. Thanh Khê, TP. Đà Nẵng</p>
+                    <a href="tel:0327575727" class="campus-phone">032 757 57 27</a>
+                </div>
+                
+                <div class="campus-card">
+                    <div class="campus-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>BTEC FPT Hồ Chí Minh</h3>
+                    <p>Toà F, công viên phần mềm Quang Trung, P. Tân Chánh Hiệp, Q. 12, TP.Hồ Chí Minh</p>
+                    <a href="tel:0353852138" class="campus-phone">035 385 21 38</a>
+                </div>
+                
+                <div class="campus-card">
+                    <div class="campus-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>BTEC FPT Cần Thơ</h3>
+                    <p>Đường số 22, Phường Thường Thanh, Quận Cái Răng, TP. Cần Thơ</p>
+                    <a href="tel:0967057605" class="campus-phone">096 705 76 05</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <div class="highlight" style="display: inline-block; max-width: 600px;">
+                    <h3>Hotline 24/7</h3>
+                    <p style="font-size: 1.8rem; font-weight: 700; margin: 10px 0;">0329 605 828</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>VỀ BTEC FPT</h2>
+            </div>
+            
+            <div class="about-content">
+                <h3>Chương trình đào tạo</h3>
+                <p>BTEC HND là chương trình đào tạo của Anh Quốc, tương đương cấp độ cao đẳng trong hệ thống giáo dục Việt Nam. Với triết lý đào tạo hiện đại hướng đến việc giúp người học ứng dụng tối đa kiến thức vào thực tế, chương trình BTEC HND liên tục được cập nhật những xu hướng, kiến thức mới nhất nhằm đáp ứng nhu cầu về chất lượng nhân sự của các công ty, tập đoàn hiện nay.</p>
+                
+                <div class="highlight">
+                    <p>BTEC FPT mang sứ mệnh là cầu nối cho sinh viên Việt Nam được tiếp cận với chương trình đào tạo quốc tế, nền giáo dục tiến bộ và đẳng cấp trên thế giới.</p>
+                </div>
+                
+                <h3>Phương pháp giáo dục</h3>
+                <p>Đào tạo chương trình chuẩn quốc tế. Đào tạo toàn diện, đặc biệt chú trọng kỹ năng ngoại ngữ và phát triển kỹ năng nghề nghiệp, đưa công nghệ thông minh, đặc biệt là trí tuệ nhân tạo (AI) và các thành tựu khoa học vào giảng dạy.</p>
+                
+                <h3>Bằng cấp giá trị</h3>
+                <p>Bằng BTEC là một văn bằng quốc tế chất lượng cao, bao gồm các chuyên ngành từ kinh doanh đến kỹ thuật, có giá trị tương đương với bằng GCSE (cấp độ 1 to 2), A Level (cấp độ 3) và bằng đại học (cấp độ 4-7).</p>
+                <p>Bằng BTEC HND Level 5, là một bằng cấp bậc cao tại Anh Quốc. Với bằng cấp này, sinh viên có thể học lên cấp cao hơn tại các trường đại học. Bằng cấp này có giá trị tương đương với chương trình năm thứ 2 trong chương trình đại học 3 năm tại Anh Quốc.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <h2>ĐỐI TÁC CHIẾN LƯỢC</h2>
+            <div class="partners-logos">
+                <div style="background: white; padding: 15px; border-radius: 8px;">
+                    <p style="color: var(--dark); font-weight: 700; margin: 0;">PEARSON</p>
+                </div>
+                <div style="background: white; padding: 15px; border-radius: 8px;">
+                    <p style="color: var(--dark); font-weight: 700; margin: 0;">FPT EDUCATION</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>BTEC FPT</h3>
+                    <p>Cao đẳng Anh Quốc BTEC FPT là chương trình đào tạo liên kết với Anh Quốc, mang sứ mệnh là cầu nối cho sinh viên Việt Nam được tiếp cận với chương trình đào tạo quốc tế, nền giáo dục tiến bộ và đẳng cấp trên thế giới.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="#about">Giới thiệu BTEC FPT</a></li>
+                        <li><a href="#programs">Chương trình đào tạo</a></li>
+                        <li><a href="#features">Lợi thế của BTEC</a></li>
+                        <li><a href="#campuses">Hệ thống cơ sở</a></li>
+                        <li><a href="#">Tuyển sinh</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Liên hệ</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> Hotline: 0329 605 828</p>
+                        <p><i class="fas fa-envelope"></i> Email: contact@btec.fpt.edu.vn</p>
+                        <p><i class="fas fa-globe"></i> Website: btec.fpt.edu.vn</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Cao đẳng Anh Quốc BTEC FPT. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                navMenu.classList.remove('active');
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.feature-card, .program-card, .campus-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
